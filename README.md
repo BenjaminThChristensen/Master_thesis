@@ -1,14 +1,10 @@
 # Sub-250g Fixed-Wing Drone for Wildlife Monitoring in Africa
 
-This repository documents the design, setup, and testing of a sub-250-gram fixed-wing drone system developed for wildlife monitoring in Africa. The platform integrates a lightweight flight controller (Kakute H7 Mini) with a Raspberry Pi Zero 2 W companion computer running Ubuntu Server, ROS 2, and MAVROS.
-
-The drone is designed to autonomously capture aerial imagery and synchronize it with onboard telemetry, enabling post-processing for wildlife tracking, geotagged mapping, and behavioral analysis.
-
 ---
 
 ## 🧩 Repository Structure
 
-```bash
+```console
 Master_thesis/
 ├── assets/                      # Diagrams and visual materials
 │   ├── wiring_diagram.svg
@@ -37,7 +33,7 @@ Master_thesis/
 │   ├── setup.sh
 │   └── geotag_capture.py
 └── README.md                   # You are here
-
+```
 
 ---
 
@@ -51,7 +47,7 @@ Master_thesis/
 
 ### 2. Run Setup Script
 
-```bash
+
 cd ~/pi_setup
 chmod +x setup.sh
 ./setup.sh
@@ -71,21 +67,20 @@ python3 ~/pi_setup/geotag_capture.py
 
 📷 Hardware Overview
 
-    Flight Controller: Kakute H7 Mini
+Flight Controller: Kakute H7 Mini
 
-    Companion Computer: Raspberry Pi Zero 2 W
+Companion Computer: Raspberry Pi Zero 2 W
 
-    OS: Ubuntu Server 22.04 (64-bit)
+OS: Ubuntu Server 22.04 (64-bit)
 
-    Camera: Pi Camera v2
+Camera: Pi Camera v2
 
-    Power Supply: ESC BEC (5V 2–3A)
+Power Supply: ESC BEC (5V 2–3A)
 
 👨‍💻 Author
-
-Benjamin T.H. Christensen
+Benjamin TH. Christensen
 MSc Thesis Project – 2025
-Aarhus University
+University of southern Denmark
 📜 License
 
 This repository is released under the MIT License. Use it, modify it, fly responsibly.

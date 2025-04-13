@@ -1,0 +1,11 @@
+[Unit]
+Description=Start MAVROS on boot
+After=network.target
+
+[Service]
+User=benjamin
+ExecStart=/opt/ros/humble/bin/ros2 run mavros mavros_node --ros-args -p fcu_url:=/dev/serial0:57600
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

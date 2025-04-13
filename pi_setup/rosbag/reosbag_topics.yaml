@@ -1,0 +1,5 @@
+topics:
+  - /mavros/global_position/global
+  - /mavros/imu/data
+  - /mavros/local_position/pose
+  - /mavros/state

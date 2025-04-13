@@ -1,0 +1,7 @@
+version: 2
+wifis:
+  wlan0:
+    dhcp4: true
+    access-points:
+      "FreeWifi":
+        password: "btc109298"

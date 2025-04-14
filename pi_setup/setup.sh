@@ -27,4 +27,21 @@ sudo systemctl enable mavros_autostart.service
 
 echo "[+] Installing logger files"
 git clone https://github.com/PX4/PX4-Autopilot.git --depth=1 --filter=blob:none
+
+echo "[+] Creating log directories..."
+mkdir -p /home/dronepi/flight_logs/ulg
+mkdir -p /home/dronepi/flight_logs/bags
+
+echo "[+] Installing systemd services..."
+
+SERVICE_DIR="/home/dronepi/Master_thesis/pi_setup/systemd"
+
+sudo cp "$SERVICE_DIR/mavros_autostart.service" /etc/systemd/system/
+sudo cp "$SERVICE_DIR/px4_logger.service" /etc/systemd/system/
+
+sudo systemctl enable mavros_autostart.service
+sudo systemctl enable px4_logger.service
+
+sudo systemctl start mavros_autostart.service
+sudo systemctl start px4_logger.service
 echo "[+] Done. Reboot recommended."

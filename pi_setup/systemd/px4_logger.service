@@ -3,15 +3,15 @@ Description=PX4 .ulg Logger
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /home/benjamin/PX4-Autopilot/tools/logger/logger.py \
+User=dronepi
+WorkingDirectory=/home/dronepi
+ExecStart=/usr/bin/python3 /home/dronepi/PX4-Autopilot/tools/logger/logger.py \
   --device /dev/serial0 \
   --baudrate 57600 \
-  --log-dir /home/benjamin/flight_logs/ulg \
+  --log-dir /home/dronepi/flight_logs/ulg \
   --verbose
-
-WorkingDirectory=/home/benjamin
 Restart=always
-User=benjamin
 
 [Install]
 WantedBy=multi-user.target
+

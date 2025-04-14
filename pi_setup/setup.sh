@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+echo "[+] Creating swap space..."
+sudo fallocate -l 5G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
+
+
 echo "[+] Updating system..."
 sudo apt update && sudo apt upgrade -y
 
@@ -13,15 +21,10 @@ sudo apt install -y curl git python3-pip cmake build-essential \
 echo "[+] Installing libcamera and dev tools..."
 sudo apt install -y libcamera-apps libcamera-dev
 
-echo "[+] Creating swap space..."
-sudo fallocate -l 1G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
-
 echo "[+] Enabling MAVROS autostart service..."
 sudo cp systemd/mavros_autostart.service /etc/systemd/system/
 sudo systemctl enable mavros_autostart.service
 
+echo "[+] Installing logger files"
+git clone https://github.com/PX4/PX4-Autopilot.git --depth=1 --filter=blob:none
 echo "[+] Done. Reboot recommended."

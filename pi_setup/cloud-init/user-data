@@ -1,9 +1,10 @@
 #cloud-config
 users:
-  - name: benjamin
+  - name: dronepi
+    groups: sudo
     shell: /bin/bash
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
-    plain_text_passwd: 'drone2025'
+    plain_text_passwd: 'pi'
     ssh_pwauth: true
 
 hostname: dronepi

@@ -7,7 +7,7 @@ User=dronepi
 WorkingDirectory=/home/dronepi
 ExecStart=/usr/bin/python3 /home/dronepi/PX4-Autopilot/tools/logger/logger.py \
   --device /dev/serial0 \
-  --baudrate 57600 \
+  --baudrate 115200 \
   --log-dir /home/dronepi/flight_logs/ulg \
   --verbose
 Restart=always

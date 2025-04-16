@@ -42,6 +42,15 @@ sudo apt install -y \
   ros-humble-mavros \
   ros-humble-mavros-extras \
   python3-colcon-common-extensions
+  
+echo "[+] Sourcing ROS 2 (Humble) environment..."
+source /opt/ros/humble/setup.bash
+if ! grep -Fxq "source /opt/ros/humble/setup.bash" ~/.bashrc; then
+  echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+  echo "[+] Added ROS source line to ~/.bashrc"
+else
+  echo "[+] ROS source line already in ~/.bashrc"
+fi
 
 echo "[+] Installing libcamera and dev tools..."
 sudo apt install -y libcamera-apps libcamera-dev

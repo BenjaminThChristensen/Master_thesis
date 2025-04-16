@@ -16,7 +16,8 @@ echo "[+] Updating system..."
 sudo apt update && sudo apt upgrade -y
 
 #setting up locales
-sudo apt update && sudo apt install locales
+echo "[+] setting up locales stuff"
+sudo apt install locales
 sudo locale-gen en_US en_US.UTF-8
 sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -26,10 +27,12 @@ sudo apt install -y software-properties-common curl gnupg lsb-release
 sudo add-apt-repository universe -y
 
 # Add ROS 2 GPG key
+echo "[+]Adding ROS 2 GPG key"
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc \
   | sudo tee /etc/apt/trusted.gpg.d/ros.asc > /dev/null
 
 # Add ROS 2 repo
+echo "[+]Adding ROS 2 repo"
 echo "deb http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" \
   | sudo tee /etc/apt/sources.list.d/ros2.list
 
@@ -63,8 +66,23 @@ echo "[+] Installing logger files"
 git clone https://github.com/PX4/PX4-Autopilot.git --depth=1 --filter=blob:none
 
 echo "[+] Creating log directories..."
-mkdir -p /home/dronepi/flight_logs/ulg
-mkdir -p /home/dronepi/flight_logs/bags
+echo "[+] Creating log directories..."
+
+LOG_BASE="/home/dronepi/flight_logs"
+
+if [ ! -d "$LOG_BASE/ulg" ]; then
+  mkdir -p "$LOG_BASE/ulg"
+  echo "[+] Created $LOG_BASE/ulg"
+else
+  echo "[!] $LOG_BASE/ulg already exists, skipping."
+fi
+
+if [ ! -d "$LOG_BASE/bags" ]; then
+  mkdir -p "$LOG_BASE/bags"
+  echo "[+] Created $LOG_BASE/bags"
+else
+  echo "[!] $LOG_BASE/bags already exists, skipping."
+fi
 
 echo "[+] Installing systemd services..."
 

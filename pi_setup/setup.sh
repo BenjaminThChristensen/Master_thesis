@@ -17,10 +17,15 @@ sudo apt update && sudo apt upgrade -y
 
 #setting up locales
 echo "[+] setting up locales stuff"
-sudo apt install locales
-sudo locale-gen en_US en_US.UTF-8
-sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
+echo "[+] Setting up locales..."
+if ! locale | grep -q "en_US.UTF-8"; then
+    sudo apt install -y locales
+    sudo locale-gen en_US en_US.UTF-8
+    sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+    export LANG=en_US.UTF-8
+else
+    echo "[!] Locale en_US.UTF-8 already configured."
+fi
 
 echo "[+] Adding ROS 2 Humble sources..."
 sudo apt install -y software-properties-common curl gnupg lsb-release
@@ -63,8 +68,12 @@ sudo cp systemd/mavros_autostart.service /etc/systemd/system/
 sudo systemctl enable mavros_autostart.service
 
 echo "[+] Installing logger files"
-git clone https://github.com/PX4/PX4-Autopilot.git --depth=1 --filter=blob:none
-
+if [ ! -d ~/PX4-Autopilot ]; then
+    echo "[+] Cloning PX4 tools..."
+    git clone https://github.com/PX4/PX4-Autopilot.git --depth=1 --filter=blob:none
+else
+    echo "[!] PX4-Autopilot already cloned, skipping."
+fi
 echo "[+] Creating log directories..."
 echo "[+] Creating log directories..."
 

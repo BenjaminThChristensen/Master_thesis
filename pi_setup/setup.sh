@@ -15,10 +15,32 @@ fi
 echo "[+] Updating system..."
 sudo apt update && sudo apt upgrade -y
 
-echo "[+] Installing ROS 2 and MAVROS..."
-sudo apt install -y curl git python3-pip cmake build-essential \
-  libeigen3-dev libboost-all-dev libopencv-dev \
-  ros-humble-desktop ros-humble-mavros ros-humble-mavros-extras \
+#setting up locales
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+echo "[+] Adding ROS 2 Humble sources..."
+sudo apt install -y software-properties-common curl gnupg lsb-release
+sudo add-apt-repository universe -y
+
+# Add ROS 2 GPG key
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc \
+  | sudo tee /etc/apt/trusted.gpg.d/ros.asc > /dev/null
+
+# Add ROS 2 repo
+echo "deb http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" \
+  | sudo tee /etc/apt/sources.list.d/ros2.list
+
+echo "[+] Updating package list with ROS sources..."
+sudo apt update && sudo apt upgrade -y
+
+echo "[+] Installing minimal ROS 2 (ros-base + MAVROS)..."
+sudo apt install -y \
+  ros-humble-ros-base \
+  ros-humble-mavros \
+  ros-humble-mavros-extras \
   python3-colcon-common-extensions
 
 echo "[+] Installing libcamera and dev tools..."

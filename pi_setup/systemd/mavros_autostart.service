@@ -5,8 +5,7 @@ After=network.target
 [Service]
 User=dronepi
 WorkingDirectory=/home/dronepi
-ExecStart=/opt/ros/humble/bin/ros2 run mavros mavros_node \
-  --ros-args -p fcu_url:=/dev/serial0:57600
+ExecStart=/bin/bash -c "source /opt/ros/humble/setup.bash && ros2 run mavros mavros_node --ros-args -p fcu_url:=/dev/serial0:115200"
 Restart=always
 
 [Install]

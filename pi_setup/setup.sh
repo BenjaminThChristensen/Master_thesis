@@ -2,12 +2,15 @@
 set -e
 
 echo "[+] Creating swap space..."
-sudo fallocate -l 5G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
-
+if [ -f /swapfile ]; then
+    echo "[!] Swapfile already exists, skipping."
+else
+    sudo fallocate -l 5G /swapfile
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+    echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
+fi
 
 echo "[+] Updating system..."
 sudo apt update && sudo apt upgrade -y

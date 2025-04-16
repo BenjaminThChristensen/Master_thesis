@@ -3,5 +3,5 @@ wifis:
   wlan0:
     dhcp4: true
     access-points:
-      "FreeWifi":
+      "Freewifi":
         password: "btc109298"

@@ -27,6 +27,7 @@ Master_thesis/
 │   │   └── network-config
 │   ├── systemd/
 │   │   └── mavros_autostart.service
+|   |   └── px4_logger.service
 │   ├── rosbag/
 │   │   ├── record_mavros.sh
 │   │   └── rosbag_topics.yaml

@@ -48,24 +48,24 @@ Master_thesis/
 
 ### 2. Run Setup Script
 
-
+```console
 cd ~/pi_setup
 chmod +x setup.sh
 ./setup.sh
-
+```
 3. Start MAVROS
-
+```console
 sudo systemctl start mavros_autostart.service
-
+```
 4. Record Flight Data
-
+```console
 cd ~/pi_setup/rosbag
 ./record_mavros.sh
-
+```
 5. Capture Images + GPS Data
-
+```console
 python3 ~/pi_setup/geotag_capture.py
-
+```
 📷 Hardware Overview
 
 Flight Controller: Kakute H7 Mini

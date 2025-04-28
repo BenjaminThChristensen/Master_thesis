@@ -61,7 +61,7 @@ else
 fi
 
 echo "[+] Installing libcamera and dev tools..."
-sudo apt install -y libcamera-dev v4l-utils
+sudo apt install -y v4l-utils
 
 echo "[+] Enabling MAVROS autostart service..."
 sudo cp systemd/mavros_autostart.service /etc/systemd/system/

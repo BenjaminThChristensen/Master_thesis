@@ -60,13 +60,6 @@ else
   echo "[+] ROS source line already in ~/.bashrc"
 fi
 
-echo "[+] Installing libcamera and dev tools..."
-sudo apt install -y v4l-utils
-
-echo "[+] Enabling MAVROS autostart service..."
-sudo cp systemd/mavros_autostart.service /etc/systemd/system/
-sudo systemctl enable mavros_autostart.service
-
 echo "[+] Installing logger files"
 if [ ! -d ~/PX4-Autopilot ]; then
     echo "[+] Cloning PX4 tools..."
@@ -98,11 +91,11 @@ echo "[+] Installing systemd services..."
 SERVICE_DIR="/home/dronepi/Master_thesis/pi_setup/systemd"
 
 sudo cp "$SERVICE_DIR/mavros_autostart.service" /etc/systemd/system/
-sudo cp "$SERVICE_DIR/px4_logger.service" /etc/systemd/system/
+sudo cp "$SERVICE_DIR/mavros_logger.service" /etc/systemd/system/
 
 sudo systemctl enable mavros_autostart.service
-sudo systemctl enable px4_logger.service
+sudo systemctl enable mavros_logger.service
 
 sudo systemctl start mavros_autostart.service
-sudo systemctl start px4_logger.service
+sudo systemctl start mavros_logger.service
 echo "[+] Done. Reboot recommended."

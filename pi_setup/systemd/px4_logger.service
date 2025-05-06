@@ -4,10 +4,11 @@ After=network.target
 
 [Service]
 User=dronepi
+Group=dialout
 WorkingDirectory=/home/dronepi
-ExecStart=/bin/bash -c "source /opt/ros/humble/setup.bash && python3 /home/dronepi/PX4-Autopilot/tools/logger/logger.py --device /dev/serial0 --baudrate 115200 --log-dir /home/dronepi/flight_logs/ulg --verbose"
-Restart=always
+ExecStart=/home/dronepi/start_px4_logger.sh
+Restart=on-failure
+RestartSec=3
 
 [Install]
 WantedBy=multi-user.target
-

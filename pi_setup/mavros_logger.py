@@ -1,9 +1,12 @@
+#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy
 from datetime import datetime
 import os
 import csv
+os.chdir('/home/dronepi/Master_thesis/pi_setup')
+
 
 from mavros_msgs.msg import State
 from sensor_msgs.msg import BatteryState, Imu, NavSatFix
@@ -27,6 +30,9 @@ class Logger(Node):
             f = open(os.path.join(self.log_dir, topic.replace('/', '_') + '.csv'), 'w', newline='')
             writer = csv.writer(f)
             writer.writerow(['timestamp'] + headers)
+            # this will make sure to save the logs all time in case of powerout
+            f.flush()
+            os.fsync(f.fileno())
             self.files[topic] = f
             self.writers[topic] = writer
 

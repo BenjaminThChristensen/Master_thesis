@@ -1,6 +1,6 @@
 # Raspberry Pi Setup (Companion Computer)
 
-This setup turns the Pi Zero 2 W into a companion computer for MAVROS, telemetry logging, and camera-based geo-tagging.
+This setup turns the Pi Zero 2 W into a companion computer with ROS2 and automated scripts for MAVROS and logging.
 
 ---
 
@@ -8,8 +8,6 @@ This setup turns the Pi Zero 2 W into a companion computer for MAVROS, telemetry
 - Headless Ubuntu Server boot (with Wi-Fi auto-connect)
 - SSH access enabled
 - ROS 2 Humble + MAVROS
-- Pi Camera support
-- Geo-tagging script
 - Automatic MAVROS launch at boot
 - ROS bag recording script
 

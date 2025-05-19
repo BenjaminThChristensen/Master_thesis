@@ -6,10 +6,6 @@
 
 ```console
 Master_thesis/
-├── assets/                      # Diagrams and visual materials
-│   ├── wiring_diagram.svg
-│   ├── wiring_diagram.png
-│   └── caption.txt
 ├── flight_controller/          # PX4 setup for Kakute H7 Mini
 │   ├── README.md
 │   └── params/
@@ -22,17 +18,18 @@ Master_thesis/
 │   │   └── flight_log_template.md
 ├── pi_setup/                   # Companion computer setup (Pi Zero 2 W)
 │   ├── README.md
-│   ├── cloud-init/
-│   │   ├── user-data
-│   │   └── network-config
 │   ├── systemd/
 │   │   └── mavros_autostart.service
 |   |   └── px4_logger.service
 │   ├── rosbag/
 │   │   ├── record_mavros.sh
 │   │   └── rosbag_topics.yaml
+│   ├── logs/
 │   ├── setup.sh
-│   └── geotag_capture.py
+│   ├── camera_setup.sh
+│   ├── mavros_logger.py
+│   ├── camera_setup.sh
+│   └── ulog_logger.sh
 └── README.md                   # You are here
 ```
 

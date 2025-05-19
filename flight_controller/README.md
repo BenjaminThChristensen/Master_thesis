@@ -1,17 +1,13 @@
-# Flight Controller Setup - Kakute H7 Mini + PX4
+# Flight Controller Configuration
 
-## Hardware: Kakute H7 Mini
-- Loaded with PX4 (v1.14 or compatible)
-- Connected to Raspberry Pi Zero 2 W over UART
+This module contains the PX4 firmware configurations for the Kakute H7 Mini flight controller.
 
-## Wiring Summary:
-- Pi TX → Kakute RX (TELEM1)
-- Pi RX ← Kakute TX (TELEM1)
-- PI GND - Kakute GND
-- BEC 5V to Pi GPIO (pin 2)
-- GND to Pi GPIO (pin 6)
+## Files
 
-## PX4 Params
-To use the same configuration as this project, upload the PX4 parameters to your board.
-See `/params/px4_flight_config.param` for complete configuration used for this build.
+- `250gram_drone.params`: Parameter file for PX4 configuration.
 
+## Setup Instructions
+
+1. Install the PX4 firmware on the Kakute H7 Mini following this guide: https://github.com/GuyMaalouf/FC_Kakute_H7 
+2. Load the `250gram_drone.params` file using QGroundControl.
+3. Calibrate sensors and verify system

@@ -8,8 +8,7 @@
 Master_thesis/
 ├── flight_controller/          # PX4 setup for Kakute H7 Mini
 │   ├── README.md
-│   └── params/
-│       └── px4_flight_config.param
+│   ├── 250gram_drone.params
 ├── flight_tests/               # Logs, test reports, checklists
 │   ├── README.md
 │   ├── checklists/

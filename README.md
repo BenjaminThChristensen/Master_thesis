@@ -2,6 +2,13 @@
 
 ---
 
+This repository contains the code, configurations, and documentation for my Master's thesis project, which focuses on developing a lightweight fixed-wing drone equipped for wildlife monitoring tasks in African environments.
+
+The master thsesis explaining the project and its content can be found as: Sub-250 gram fixed-wing drone for wildlife monitoring in Africa.pdf
+
+
+---
+
 ## 🧩 Repository Structure
 
 ```console
@@ -31,6 +38,10 @@ Master_thesis/
 │   └── ulog_logger.sh
 └── README.md                   # You are here
 ```
+
+## Project Overview
+
+The aim of this project is to design and implement a sub-250g fixed-wing drone capable of autonomous flight and data collection for wildlife monitoring. The drone integrates a PX4 flight controller and a Raspberry Pi Zero 2 W companion computer.
 
 ---
 
